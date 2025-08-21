@@ -18,11 +18,13 @@ contract SimpleStorage {
     function store(uint256 _favoriteNumber) public {
         myFavoriteNumber = _favoriteNumber;
     }
+
     // view, pure
     function retrieve() public view returns(uint256) {
         return myFavoriteNumber;
     }
 
+    // callData, memory, storage
     function addPersons(string memory _name, uint256 _favoriteNumber) public {
         people.push(person(_favoriteNumber, _name));
     }
