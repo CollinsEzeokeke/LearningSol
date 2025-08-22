@@ -17,13 +17,12 @@ contract storageFactory {
     ) public {
         // Address
         // ABI: Application Binary Interface
-        SimpleStorage simpleStorage = listOfSimpleStorageContracts[
-            _simpleStorageIndex
-        ];
-        simpleStorage.store(_newSimpleStorageNumber);
+        listOfSimpleStorageContracts[_simpleStorageIndex].store(
+            _newSimpleStorageNumber
+        );
     }
+
     function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {
-        SimpleStorage simpleStorage = listOfSimpleStorageContracts[_simpleStorageIndex];
-        return simpleStorage.retrieve();
+        return listOfSimpleStorageContracts[_simpleStorageIndex].retrieve();
     }
 }
