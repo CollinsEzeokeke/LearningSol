@@ -2,7 +2,7 @@
 pragma solidity ^0.8.18; // stating our version
 
 contract SimpleStorage {
-    uint256 myFavoriteNumber; // same as 0
+    uint256[] myFavoriteNumber; // same as 0
 
     //uint256[] listOfFavoriteNumbers; // [arrays]
 
@@ -16,12 +16,12 @@ contract SimpleStorage {
 
     mapping(string => uint256) public nameToFavoriteNumber;
 
-    function store(uint256 _favoriteNumber) public {
+    function store(uint256[] memory _favoriteNumber) public {
         myFavoriteNumber = _favoriteNumber;
     }
 
     // view, pure
-    function retrieve() public view returns(uint256) {
+    function retrieve() public view returns(uint256[] memory) {
         return myFavoriteNumber;
     }
 

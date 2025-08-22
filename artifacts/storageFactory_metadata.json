@@ -13,8 +13,14 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "simpleStorage",
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "listOfSimpleStorageContracts",
 				"outputs": [
 					{
 						"internalType": "contract SimpleStorage",
@@ -23,6 +29,43 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_simpleStorageIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "sfGet",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_simpleStorageIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_newSimpleStorageNumber",
+						"type": "uint256[]"
+					}
+				],
+				"name": "sfStore",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -53,12 +96,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/storageFactory.sol": {
-			"keccak256": "0xbdae112a58aa7062fd98a38a6d3a88160658cce26b1bb73a21590b67ed2cac35",
+		"contracts/simpleStorage.sol": {
+			"keccak256": "0x682754112dbe8544f519581ba8ddb0aa5d225ef17bc8bc753c52fefe9a619019",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://99d629a92fc6cf2bab89da789154eedc26401c110de26bbb9d74111986beb50f",
-				"dweb:/ipfs/QmdDq8FXR2JXqrTEs4XpMaeSU2i4KV6wprts56Dacc4NDe"
+				"bzz-raw://4dbd8032e5fcc2621f231a0bb5611780bd79a73630931f2c6e0b364306240eef",
+				"dweb:/ipfs/QmWG9WuXfvE3tLETyiGhVigedCZFvegCiGqUXaexD8EJ9v"
+			]
+		},
+		"contracts/storageFactory.sol": {
+			"keccak256": "0x6bff19fe4e61ef15e50738ef98c94b2c8a54c54909e1163060fce09c01ca3ce8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ed4b1c4864c3666e2e204d3ad575c44c5d483311e96111e615ec17d24f08ab6b",
+				"dweb:/ipfs/QmNrqc3kDTgEmPpwBVo5WKGCAFyhcem43wbLqaouZD7JrM"
 			]
 		}
 	},

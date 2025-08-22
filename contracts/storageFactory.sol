@@ -1,45 +1,32 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.30;
 
-contract SimpleStorage {
-    uint256 myFavoriteNumber; // same as 0
-
-    //uint256[] listOfFavoriteNumbers; // [arrays]
-
-    struct person{
-        uint256 favoriteNumber;
-        string name;
-    }
-
-    // dynamic array
-    person[] public people; // defaults to being empty []
-
-    mapping(string => uint256) public nameToFavoriteNumber;
-
-    function store(uint256 _favoriteNumber) public {
-        myFavoriteNumber = _favoriteNumber;
-    }
-
-    // view, pure
-    function retrieve() public view returns(uint256) {
-        return myFavoriteNumber;
-    }
-
-    // callData, memory, storage
-    function addPersons(string memory _name, uint256 _favoriteNumber) public {
-        people.push(person(_favoriteNumber, _name));
-        nameToFavoriteNumber[_name] = _favoriteNumber;
-    }
-}
-
+import {SimpleStorage} from "./simpleStorage.sol";
 
 contract storageFactory {
+    SimpleStorage[] public listOfSimpleStorageContracts;
 
-    SimpleStorage public simpleStorage;
+    uint256[] arrayOfNumbers;
 
     function createSimpleStorageContract() public {
-        simpleStorage = new SimpleStorage();
+        SimpleStorage newSimplestorageContracts = new SimpleStorage();
+        listOfSimpleStorageContracts.push(newSimplestorageContracts);
     }
 
-
+    function sfStore(
+        uint256 _simpleStorageIndex,
+        uint256[] memory _newSimpleStorageNumber
+    ) public {
+        // Address
+        // ABI: Application Binary Interface
+        SimpleStorage simpleStorage = listOfSimpleStorageContracts[
+            _simpleStorageIndex
+        ];
+        arrayOfNumbers = _newSimpleStorageNumber;
+        simpleStorage.store(arrayOfNumbers);
+    }
+    function sfGet(uint256 _simpleStorageIndex) public view returns (uint256[] memory) {
+        SimpleStorage simpleStorage = listOfSimpleStorageContracts[_simpleStorageIndex];
+        return simpleStorage.retrieve();
+    }
 }
