@@ -6,8 +6,6 @@ import {SimpleStorage} from "./simpleStorage.sol";
 contract storageFactory {
     SimpleStorage[] public listOfSimpleStorageContracts;
 
-    uint256[] arrayOfNumbers;
-
     function createSimpleStorageContract() public {
         SimpleStorage newSimplestorageContracts = new SimpleStorage();
         listOfSimpleStorageContracts.push(newSimplestorageContracts);
@@ -15,17 +13,16 @@ contract storageFactory {
 
     function sfStore(
         uint256 _simpleStorageIndex,
-        uint256[] memory _newSimpleStorageNumber
+        uint256 _newSimpleStorageNumber
     ) public {
         // Address
         // ABI: Application Binary Interface
         SimpleStorage simpleStorage = listOfSimpleStorageContracts[
             _simpleStorageIndex
         ];
-        arrayOfNumbers = _newSimpleStorageNumber;
-        simpleStorage.store(arrayOfNumbers);
+        simpleStorage.store(_newSimpleStorageNumber);
     }
-    function sfGet(uint256 _simpleStorageIndex) public view returns (uint256[] memory) {
+    function sfGet(uint256 _simpleStorageIndex) public view returns (uint256) {
         SimpleStorage simpleStorage = listOfSimpleStorageContracts[_simpleStorageIndex];
         return simpleStorage.retrieve();
     }
